@@ -1,16 +1,29 @@
 import { useState } from "react";
-import { HeroSection } from "./components/HeroSection";
-import { Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
-import { WhyUs } from "./components/WhyUs";
+import { Home } from "./pages/Home";
+import { RentCar } from "./pages/RentCar";
+import { ListCars } from "./pages/ListCars";
+import { VisitPlaces } from "./pages/VisitPlaces";
+import { WishList } from "./pages/WishList";
+import { CustomeCare } from "./pages/CustomeCare";
+import { LoginSign } from "./pages/LoginSign";
+import { Booking } from "./pages/Booking";
 
 function App() {
   return (
     <>
       <Navbar/>
-      <HeroSection />
-      <WhyUs/>
-      <Routes></Routes>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/rentcar" element={<RentCar/>} />
+        <Route path="/booking" element={<Booking/>} />
+        <Route path="/listcar" element={<ListCars/>} />
+        <Route path="/visitplace" element={<VisitPlaces/>} />
+        <Route path="/wishlist" element={<WishList/>} />
+        <Route path="/customecare" element={<CustomeCare/>} />
+        <Route path="/loginsign" element={<LoginSign/>} />
+      </Routes>
     </>
   );
 }
