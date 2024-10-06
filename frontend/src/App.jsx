@@ -9,6 +9,8 @@ import { WishList } from "./pages/WishList";
 import { CustomeCare } from "./pages/CustomeCare";
 import { LoginSign } from "./pages/LoginSign";
 import { Booking } from "./pages/Booking";
+import { Footer } from "./components/Footer";
+import { AboutUs } from "./pages/AboutUs";
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
         <Route path="/wishlist" element={<WishList/>} />
         <Route path="/customecare" element={<CustomeCare/>} />
         <Route path="/loginsign" element={<LoginSign/>} />
+        <Route path="/aboutus" element={<AboutUs/>} />
       </Routes>
+      <Footer/>
     </>
   );
 }

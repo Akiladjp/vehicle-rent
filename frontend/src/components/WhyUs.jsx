@@ -26,7 +26,7 @@ export const WhyUs = () => {
   ];
 
   return (
-    <div className="py-16 bg-gradient-to-r from-gray-100 to-gray-200 relative overflow-hidden">
+    <div className="py-16 relative overflow-hidden">
       {/* Section Title */}
       <div className="text-center mb-12">
         <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
@@ -42,7 +42,7 @@ export const WhyUs = () => {
           {whyus.map((data, index) => (
             <div
               key={index}
-              className="relative group bg-white rounded-xl shadow-lg p-8 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+              className="relative group  bg-gradient-to-b from-white to-[#ffffe8] rounded-xl shadow-lg p-8 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             >
               {/* Circular Icon Background */}
               <div className="absolute -top-8 -left-8 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full p-4 transform rotate-12 group-hover:rotate-0 transition-transform duration-500">

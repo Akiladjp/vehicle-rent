@@ -30,7 +30,7 @@ export const Navbar = () => {
     ]
 
   return (
-    <div className="fixed w-[100%] bg-[#FFEA00] shadow-md">
+    <div className="fixed z-50 w-[100%] bg-[#FFEA00] shadow-md">
       <div className="flex justify-between w-[100%]">
         <div className="w-[40%]">
           <img src={logo} alt="" className="w-36"/>
