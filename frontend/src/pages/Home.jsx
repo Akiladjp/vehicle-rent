@@ -1,7 +1,7 @@
 import React from 'react'
 import { HeroSection } from '../components/HeroSection'
 import { WhyUs } from '../components/WhyUs'
-import { Testomonial } from '../components/Testomonial'
+import { Testimonial } from '../components/Testimonial'
 import { Newsletter } from '../components/Newsletter'
 
 export const Home = () => {
@@ -10,7 +10,7 @@ export const Home = () => {
         <HeroSection/>
         <WhyUs/>
         <Newsletter/>
-        <Testomonial/>
+        <Testimonial/>
     </div>
   )
 }
