@@ -12,6 +12,7 @@ import { Booking } from "./pages/Booking";
 import { Footer } from "./components/Footer";
 import { AboutUs } from "./pages/AboutUs";
 import Loading from "./components/loading/Loading";
+import { VehiclePreview } from "./components/Vehicle/VehiclePreview";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -40,6 +41,7 @@ function App() {
         <Route path="/customecare" element={<CustomeCare />} />
         <Route path="/loginsign" element={<LoginSign />} />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/vehiclePreview" element={<VehiclePreview />} />
       </Routes>
       <Footer />
     </>

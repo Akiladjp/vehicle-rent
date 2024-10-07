@@ -15,19 +15,21 @@ export const TrendingCars = () => {
         <div className="grid grid-cols-4 gap-16">
           {trendingCars.map((data, index) => (
             <div key={index}>
-              <VehicleComp
-                image={data.car_image}
-                car_name={data.car_name}
-                price1={data.price1}
-                price2={data.price2}
-                price3={data.price3}
-              />
+              <Link to='/vehiclePreview'>
+                <VehicleComp
+                  image={data.car_image}
+                  car_name={data.car_name}
+                  price1={data.price1}
+                  price2={data.price2}
+                  price3={data.price3}
+                />
+              </Link>
             </div>
           ))}
         </div>
       </div>
       <div className="flex justify-center mt-24">
-        <Link to='/rentcar'>
+        <Link to="/rentcar">
           <button className="px-4 py-2 bg-[#ffed47] rounded-lg shadow-md hover:underline hover:underline-offset-4 hover:bg-[#ffdd43] active:scale-95">
             See More
           </button>
