@@ -69,7 +69,7 @@ export const Testimonial = () => {
   };
 
   return (
-    <div className="flex flex-col mx-auto my-12 mb-32">
+    <div className="flex flex-col mx-auto mt-40 mb-32">
       <div className="flex justify-center my-12">
         <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
           Happy Customers

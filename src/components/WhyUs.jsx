@@ -26,9 +26,9 @@ export const WhyUs = () => {
   ];
 
   return (
-    <div className="py-16 relative overflow-hidden">
+    <div className="py-16 relative overflow-hidden mt-8">
       {/* Section Title */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-20">
         <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
           Why Choose Us?
         </h2>

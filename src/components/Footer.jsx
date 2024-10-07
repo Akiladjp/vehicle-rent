@@ -29,7 +29,7 @@ export const Footer = () => {
   }, []);
 
   return (
-    <div className="bg-[#FFEA00] flex shadow-md pb-8">
+    <div className="bg-[#f2e24e] flex shadow-md pb-8">
       <div className="w-full flex flex-col justify-center">
         <div className="flex justify-center flex-col mt-4">
           {/* logo and brand section */}
@@ -122,7 +122,7 @@ export const Footer = () => {
           {/* Brading and policy */}
           <MdCopyright />
           <h2 className="">
-            Designed by <a href="#" className="uppercase font-bold">codeweave technologies</a>
+            Designed by <a href="#" className="uppercase font-bold underline underline-offset-4">codeweave technologies</a>
           </h2>
         </div>
       </div>
