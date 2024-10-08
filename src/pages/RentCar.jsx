@@ -1,6 +1,7 @@
 import React from "react";
 import { VehicleComp } from "../components/Vehicle/VehicleComp";
 import ToyotaPrius from "../assets/cars/ToyotaPrius.png";
+import { UploadCheck } from "../components/UploadCheck";
 
 export const RentCar = () => {
   return (
@@ -18,6 +19,9 @@ export const RentCar = () => {
           price2="0.70$"
           price3="1.00$"
         />
+      </div>
+      <div>
+        <UploadCheck/>
       </div>
     </div>
   );

@@ -48,7 +48,7 @@ export const Navbar = () => {
           <div className="flex items-center gap-8 mr-4">
             <Link to="/wishlist"><FaHeart size={28} className="text-[#2F2F2F] hover:text-[#5f5f5f] active:scale-95"/></Link>
             <Link to="/customecare"><RiCustomerService2Fill size={28} className="text-[#2F2F2F] hover:text-[#5f5f5f] active:scale-95"/></Link>
-            <Link to="/loginsign"><button className="text-white bg-[#2F2F2F] text-[18px] px-3 py-1 rounded-md hover:bg-[#5f5f5f] active:scale-95">Login</button></Link>
+            <Link to="/login"><button className="text-white bg-[#2F2F2F] text-[18px] px-3 py-1 rounded-md hover:bg-[#5f5f5f] active:scale-95">Login</button></Link>
           </div>
         </div>
       </div>

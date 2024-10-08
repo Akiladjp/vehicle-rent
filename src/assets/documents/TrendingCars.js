@@ -51,7 +51,7 @@ const trendingCars = [
         price3: '0.70$'
     },
     {
-        car_image: alto,
+        car_image: axio,
         car_name: 'Toyota Axio',
         price1: '0.65$',
         price2: '0.95$',

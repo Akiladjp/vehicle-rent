@@ -13,6 +13,8 @@ import { Footer } from "./components/Footer";
 import { AboutUs } from "./pages/AboutUs";
 import Loading from "./components/loading/Loading";
 import { VehiclePreview } from "./components/Vehicle/VehiclePreview";
+import { Login } from "./components/LoginSign/Login";
+import { SignUp } from "./components/LoginSign/SignUp";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -39,7 +41,8 @@ function App() {
         <Route path="/visitplace" element={<VisitPlaces />} />
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/customecare" element={<CustomeCare />} />
-        <Route path="/loginsign" element={<LoginSign />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/vehiclePreview" element={<VehiclePreview />} />
       </Routes>

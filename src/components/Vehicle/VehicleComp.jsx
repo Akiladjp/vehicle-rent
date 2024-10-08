@@ -2,8 +2,8 @@ import React from "react";
 
 export const VehicleComp = (props) => {
   return (
-    <div className="transition-transform duration-300 hover:scale-105 cursor-pointer">
-      <div className="w-[320px] h-[400px] bg-[#ffee58] m-4 border-2 border-black rounded-lg py-4 hover:bg-[#ffde49]">
+    <div className="">
+      <div className="w-[320px] h-[400px] bg-[#ffee58] hover:scale-105 m-4 border-2 border-black rounded-lg py-4 transition-transform duration-300 cursor-pointer hover:bg-[#ffde49]">
         <div className="h-[180px]">
           <div className="h-[180px] flex items-center justify-center">
             <img
