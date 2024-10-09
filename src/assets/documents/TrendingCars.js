@@ -13,56 +13,72 @@ const trendingCars = [
         car_name: 'Toyota Prius',
         price1: '0.50$',
         price2: '0.70$',
-        price3: '1.00$'
+        price3: '1.00$',
+        location: 'Ella',
+        driver: 'with driver / without driver'
     },
     {
         car_image: wagonr,
         car_name: 'Suzuki WagonR',
         price1: '0.40$',
         price2: '0.60$',
-        price3: '0.90$'
+        price3: '0.90$',
+        location: 'Ella',
+        driver: 'with driver / without driver'
     },
     {
         car_image: kdh,
         car_name: 'Toyota KDH',
         price1: '0.80$',
         price2: '1.00$',
-        price3: '1.20$'
+        price3: '1.20$',
+        location: 'Kandy',
+        driver: 'with driver / without driver'
     },
     {
         car_image: hilux,
         car_name: 'Toyota Hilux',
         price1: '0.90$',
         price2: '1.10$',
-        price3: '1.30$'
+        price3: '1.30$',
+        location: 'Galle',
+        driver: 'with driver / without driver'
     },
     {
         car_image: fit,
         car_name: 'Honda Fit',
         price1: '0.45$',
         price2: '0.65$',
-        price3: '0.85$'
+        price3: '0.85$',
+        location: 'Badulla',
+        driver: 'without driver'
     },
     {
         car_image: alto,
         car_name: 'Suzuki Alto',
         price1: '0.35$',
         price2: '0.50$',
-        price3: '0.70$'
+        price3: '0.70$',
+        location: 'Galle',
+        driver: 'with driver / without driver'
     },
     {
         car_image: axio,
         car_name: 'Toyota Axio',
         price1: '0.65$',
         price2: '0.95$',
-        price3: '1.40$'
+        price3: '1.40$',
+        location: 'Matara',
+        driver: 'with driver / without driver'
     },
     {
         car_image: vezel,
         car_name: 'Honda Vezel',
         price1: '0.75$',
         price2: '1.00$',
-        price3: '1.70$'
+        price3: '1.70$',
+        location: 'Colombo',
+        driver: 'with driver'
     }
 ]
 

@@ -15,15 +15,13 @@ export const TrendingCars = () => {
         <div className="grid grid-cols-4 gap-16">
           {trendingCars.map((data, index) => (
             <div key={index}>
-              <Link to='/vehiclePreview'>
                 <VehicleComp
                   image={data.car_image}
                   car_name={data.car_name}
-                  price1={data.price1}
-                  price2={data.price2}
-                  price3={data.price3}
+                  price={data.price1}
+                  location={data.location}
+                  driver={data.driver}
                 />
-              </Link>
             </div>
           ))}
         </div>
