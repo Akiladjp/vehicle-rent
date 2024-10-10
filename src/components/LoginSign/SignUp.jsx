@@ -74,7 +74,7 @@ export const SignUp = () => {
           <p className="mt-4 text-gray-700 flex gap-1 justify-center">
             Already have an Account{" "}
             <Link
-              to="/login"
+              to="/"
               className="text-blue-500 hover:underline focus:outline-none font-bold"
               onClick={() => {}}
             >

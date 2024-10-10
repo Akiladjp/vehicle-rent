@@ -1,27 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { VehicleComp } from "../components/Vehicle/VehicleComp";
-import ToyotaPrius from "../assets/cars/ToyotaPrius.png";
-import { UploadCheck } from "../components/UploadCheck";
+import AllCars from "../assets/documents/AllCars.js";
 
 export const RentCar = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="pt-32">
+    <div className="pt-32 mb-12">
       <div className="flex justify-center">
         <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
           Book Your Vehicle
         </h1>
       </div>
-      <div className="my-12">
-        <VehicleComp
-          image={ToyotaPrius}
-          car_name="Toyota Prius"
-          price1="0.50$"
-          price2="0.70$"
-          price3="1.00$"
-        />
-      </div>
-      <div>
-        <UploadCheck/>
+      <div className="flex justify-center">
+        <div className="my-12 grid grid-cols-4 gap-16">
+          {AllCars.map((data, index) => (
+            <VehicleComp
+              key={index}
+              image={data.car_image}
+              car_name={data.car_name}
+              driver={data.driver}
+              price={data.price1}
+              location={data.location}
+              rating={data.rating}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from "react";
 
 export const ListCars = () => {
-  return (
-    <div>ListCars</div>
-  )
-}
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
+  return <div>ListCars</div>;
+};

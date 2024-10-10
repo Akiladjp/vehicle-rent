@@ -21,6 +21,7 @@ export const TrendingCars = () => {
                   price={data.price1}
                   location={data.location}
                   driver={data.driver}
+                  rating={data.rating}
                 />
             </div>
           ))}

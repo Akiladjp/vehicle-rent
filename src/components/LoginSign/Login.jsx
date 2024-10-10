@@ -19,7 +19,9 @@ export const Login = () => {
     >
       <div className="flex flex-col items-center justify-center min-h-screen">
         <div className="bg-white shadow-md rounded-lg px-8 py-6 max-w-sm w-full bg-opacity-70">
-          <h1 className="text-4xl font-extrabold text-gray-900 mb-8 flex justify-center">Login</h1>
+          <h1 className="text-4xl font-extrabold text-gray-900 mb-8 flex justify-center">
+            Login
+          </h1>
           <form className="">
             <div className="mb-4">
               <input
@@ -45,11 +47,13 @@ export const Login = () => {
               </div>
             </div>
             <div className="mb-4">
-              <input
-                type="submit"
-                value="Login"
-                className="w-full p-3 bg-[#ffee58] text-black rounded-md hover:bg-[#ffdd44] transition duration-200 font-bold"
-              />
+              <Link to="/home">
+                <input
+                  type="submit"
+                  value="Login"
+                  className="w-full p-3 bg-[#ffee58] text-black rounded-md hover:bg-[#ffdd44] transition duration-200 font-bold"
+                />
+              </Link>
             </div>
           </form>
 

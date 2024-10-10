@@ -32,7 +32,7 @@ export const Newsletter = () => {
           Send Your Message
         </h2>
       </div>
-      <div className="w-[60%] bg-[#FFEA00] pb-12 flex flex-col mx-auto h-auto rounded-lg shadow-lg">
+      <div className="w-[60%] bg-[#FFEA00] pb-12 pt-8 flex flex-col mx-auto h-auto rounded-lg shadow-lg">
         <div className="w-full">
           <form
             ref={form}
