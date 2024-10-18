@@ -26,7 +26,6 @@ export const RentCar = () => {
           </div>
         </div>
       </div>
-      4
       <div className="flex justify-center">
         <div className="my-12 grid grid-cols-4 gap-16">
           {AllCars.map((data, index) => (
@@ -44,9 +43,9 @@ export const RentCar = () => {
       </div>
       <div className="flex justify-center items-center mt-8">
         <button className="flex items-center px-6 py-2 text-gray-600 hover:text-black focus:outline-none rounded-md bg-[#ffe030] mx-2 hover:bg-[#ffcf30]">
-          Previous Page
+          Prev Page
         </button>
-        <span className="mx-4 text-gray-600 text-lg bg-gray-200 h-10 w-10 rounded-full">1</span>
+        <span className="mx-4 text-gray-600 text-lg bg-gray-200 h-10 w-10 rounded-full flex justify-center items-center font-bold">1</span>
         <button className="flex items-center px-6 py-2 text-gray-600 hover:text-black focus:outline-none rounded-md bg-[#ffe030] mx-2 hover:bg-[#ffcf30]">
           Next Page
         </button>
