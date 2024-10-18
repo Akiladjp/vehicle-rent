@@ -101,9 +101,9 @@ export const Footer = () => {
           </div>
 
           {/* Location details */}
-          <div className="mt-16 flex flex-col ml-64 text-[16px]">
+          <div className="mt-16 flex flex-col ml-64 text-[16px] w-48">
             <h2 className="font-bold text-[20px] mb-4">Contact Us</h2>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 ">
               <FaPhoneAlt />
               <p>011 1231234</p>
             </div>

@@ -3,9 +3,10 @@ import { VehicleComp } from "../components/Vehicle/VehicleComp";
 import AllCars from "../assets/documents/AllCars.js";
 
 export const RentCar = () => {
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="pt-32 mb-12">
@@ -37,6 +38,7 @@ export const RentCar = () => {
               price={data.price1}
               location={data.location}
               rating={data.rating}
+              isFavorite={true}
             />
           ))}
         </div>

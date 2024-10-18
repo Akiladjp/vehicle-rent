@@ -7,8 +7,15 @@ export const VisitPlaces = () => {
   }, []);
 
   return (
-    <div>
-      <VisitPlaceCom />
+    <div className="pt-32">
+      <div>
+        <h1 className="text-4xl font-extrabold text-gray-900 mb-4 text-center">
+          Book Your Vehicle
+        </h1>
+      </div>
+      <div>
+        <VisitPlaceCom />
+      </div>
     </div>
   );
 };

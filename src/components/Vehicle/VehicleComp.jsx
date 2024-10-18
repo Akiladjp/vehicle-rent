@@ -5,11 +5,13 @@ import { FaHeart } from "react-icons/fa";
 import { IoMdStar } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-export const VehicleComp = (props) => {
-  const [addFav, setAddFav] = useState(true);
+export const VehicleComp = ({ image, car_name, driver, location, price, rating, isFavorite }) => {
+
+  const [addFav, setAddFav] = useState(isFavorite);
+
   const handleFavourite = () => {
-    setAddFav((prev) => !prev);
-  };
+    setAddFav(!addFav);
+  }
 
   return (
     <div className="">
@@ -17,7 +19,7 @@ export const VehicleComp = (props) => {
         <div className="h-[180px]">
           <div className="h-[180px] flex items-center justify-center">
             <img
-              src={props.image}
+              src={image}
               alt=""
               className="w-44 h-full object-contain"
             />
@@ -25,23 +27,23 @@ export const VehicleComp = (props) => {
         </div>
         <div className="ml-4">
           <div className="flex items-center justify-between">
-            <h1 className="font-bold text-[22px]">{props.car_name}</h1>
+            <h1 className="font-bold text-[22px]">{car_name}</h1>
             <div className="flex mr-4 mb-2 gap-1">
               <IoMdStar  size={16} className="text-[#ffe030]" />
-              <p className="text-[12px]">({props.rating})</p>
+              <p className="text-[12px]">({rating})</p>
             </div>
           </div>
-          <p className="text-[14px]">{props.driver}</p>
+          <p className="text-[14px]">{driver}</p>
           <div className="flex">
             <div className="mt-3 text-[18px]">
               <div className="flex flex-col gap-y-2 text-[14px]">
                 <div className="flex items-center gap-2">
                   <FaLocationDot />
-                  <p>{props.location}</p>
+                  <p>{location}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <AiFillDollarCircle />
-                  <p>{props.price} per 1KM without driver</p>
+                  <p>{price} per 1KM without driver</p>
                 </div>
               </div>
             </div>
