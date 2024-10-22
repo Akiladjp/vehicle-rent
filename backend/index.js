@@ -5,13 +5,16 @@ import path from "path";
 import { fileURLToPath } from "url";
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import route from './routes/userRoutes.js';
+import router from "./routes/authRoutes.js";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
+
+import dotenv from 'dotenv';
+dotenv.config();
 
 const PORT = 3000;
 const MONGOURL = "mongodb+srv://akilapiyumal11:akilapiyumal11@vehicle-hire.bvih3.mongodb.net/vehicle-hire?retryWrites=true&w=majority&appName=Vehicle-hire";
@@ -58,4 +61,4 @@ app.listen(PORT, () => {
 
 
 //set API routes
-app.use('/api', route);
+app.use('/api', router);

@@ -18,3 +18,4 @@ export const createUser = async(req, res) => {
         res.status(400).json({Message : "Error in create user section"})
     }
 }
+
