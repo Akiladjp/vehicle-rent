@@ -3,13 +3,49 @@ import bcryptjs from "bcryptjs";
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndCookie.js";
 import { sendVerificationEmail, sendWelcomeEmail } from "../mailtrap/emails.js";
 
-// export const login = async(req, res) => {
+export const login = async(req, res) => {
 
-// }
+  try {
+    
+    const {email, password} = req.body;
 
-// export const logout = async(req, res) => {
+    const userExist = userModels.findOne({email});
 
-// }
+    if(!userExist){
+      return res.status(400).json({message:"Invalid credintial", success:false})
+    }
+
+    const ispasswordValid = await bcryptjs.compare(password, user.password);
+
+    if(!ispasswordValid){
+      return res.status(400).json({success:false, message:"invalid password"})
+    }
+
+    generateTokenAndSetCookie(res, user._id);
+
+    user.lastLogin = new Date();
+    await user.save();
+
+    res.status(200).json({
+      success:true, message:"Successfully Login", user:{
+        ...user._doc,
+        password: undefined,
+      },
+    })
+
+  } catch (error) {
+    res.status(400).json({ message: "error in  login" });
+  }
+}
+
+export const logout = async (req, res) => {
+  try {
+    res.clearCookie("token");
+    res.status(200).json({ message: "Logout Successfully" });
+  } catch (error) {
+    res.status(400).json({ message: "error in  logout" });
+  }
+};
 
 export const signup = async (req, res) => {
   const { name, email, mobile, password } = req.body;
@@ -88,7 +124,10 @@ export const verifyEmail = async (req, res) => {
 
     await userVerificationToken.save();
 
-    await sendWelcomeEmail(userVerificationToken.email, userVerificationToken.name);
+    await sendWelcomeEmail(
+      userVerificationToken.email,
+      userVerificationToken.name
+    );
 
     return res.status(200).json({
       success: true,
@@ -98,8 +137,9 @@ export const verifyEmail = async (req, res) => {
         password: undefined,
       },
     });
-
   } catch (error) {
-    return res.status(500).json({ message: "Error in verify email", error: error.message });
+    return res
+      .status(500)
+      .json({ message: "Error in verify email", error: error.message });
   }
 };
