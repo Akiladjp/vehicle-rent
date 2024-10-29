@@ -1,5 +1,6 @@
 import userModels from "../models/userModels.js";
 import bcryptjs from "bcryptjs";
+import crypto from 'crypto'
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndCookie.js";
 import { sendVerificationEmail, sendWelcomeEmail } from "../mailtrap/emails.js";
 
@@ -9,7 +10,7 @@ export const login = async(req, res) => {
     
     const {email, password} = req.body;
 
-    const userExist = userModels.findOne({email});
+    const userExist = await userModels.findOne({email});
 
     if(!userExist){
       return res.status(400).json({message:"Invalid credintial", success:false})
@@ -143,3 +144,31 @@ export const verifyEmail = async (req, res) => {
       .json({ message: "Error in verify email", error: error.message });
   }
 };
+
+
+export const forgotPassword = async(req, res) => {
+
+  const {email} = req.body;
+
+  try {
+    
+    const userExist = await userModels.findOne({email});
+
+    if(!userExist) {
+      return res.status(400).json({message:"Invalid email", success: false})
+    }
+
+    const resetToken = crypto.randomBytes(20).toString("hex");
+    const resetTokenExpiresAt = Date.now() + 1*60*60*1000;
+
+    userExist.resetPasswordToken = resetToken;
+    userExist.resetPasswordExpiredAt = resetTokenExpiresAt;
+
+    await userExist.save();
+
+    await sendPasswordResetEmail(userExist.email, resetToken, `${process.env.CLIENT_URL}/reset-password/${resetToken}`);
+
+  } catch (error) {
+    res.status(500).json({message:"Error in forgot password"})
+  }
+}
