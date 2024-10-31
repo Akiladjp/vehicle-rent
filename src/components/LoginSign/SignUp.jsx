@@ -3,9 +3,27 @@ import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import bgwallpaper from "../../assets/loginBackground.jpg";
+import { useAuthStore } from "../../store/authStore";
 
 export const SignUp = () => {
   const [show, setShow] = useState(false);
+
+  const [name, setName] = useState([]);
+  const [email, setEmail] = useState([]);
+  const [mobile, setMobile] = useState([]);
+  const [password, setPassword] = useState([]);
+
+  const {signup} = useAuthStore(); 
+
+  const handleRegister = async(e) => {
+    e.preventDefault();
+
+    try {
+      
+    } catch (error) {
+      
+    }
+  }
 
   return (
     <div
@@ -22,13 +40,15 @@ export const SignUp = () => {
           <h1 className="text-4xl font-extrabold text-gray-900 mb-8 flex justify-center">
             Register
           </h1>
-          <form className="">
+          <form className="" onSubmit={handleRegister}>
             <div className="mb-4">
               <input
                 type="text"
                 placeholder="Full Name"
                 className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffee58]"
                 required
+                value={name}
+                onChange={(e)=>setName(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -37,6 +57,8 @@ export const SignUp = () => {
                 placeholder="Email Address"
                 className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffee58]"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -44,6 +66,8 @@ export const SignUp = () => {
                 type="text"
                 placeholder="Mobile Number"
                 className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffee58]"
+                value={mobile}
+                onChange={(e) => setMobile(e.target.value)}
                 required
               />
             </div>
@@ -53,6 +77,8 @@ export const SignUp = () => {
                 placeholder="Password"
                 className="w-full p-3 border  rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffee58]"
                 required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <div className="absolute top-5 right-4">
                 {show === true ? (

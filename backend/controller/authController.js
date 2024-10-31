@@ -4,6 +4,7 @@ import crypto from 'crypto'
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndCookie.js";
 import { sendVerificationEmail, sendWelcomeEmail } from "../mailtrap/emails.js";
 
+
 export const login = async(req, res) => {
 
   try {
@@ -145,7 +146,6 @@ export const verifyEmail = async (req, res) => {
   }
 };
 
-
 export const forgotPassword = async(req, res) => {
 
   const {email} = req.body;
@@ -171,4 +171,23 @@ export const forgotPassword = async(req, res) => {
   } catch (error) {
     res.status(500).json({message:"Error in forgot password"})
   }
+}
+
+export const checkAuth = async(req, res) => {
+
+  const {email} = req.body;
+
+  try {
+    const userExist = await userModels.findById(req.userId).select("_password");
+
+    if(!userExist){
+      return res.status(400).json({ sucess: false, message: "user not found" })
+    }
+
+    res.status(200).json({success: true, userExist});
+
+  } catch (error) {
+    res.status(500).json({message:"Error in check auth"})
+  }
+
 }

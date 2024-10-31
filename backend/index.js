@@ -6,12 +6,18 @@ import { fileURLToPath } from "url";
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import router from "./routes/authRoutes.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
+app.use(cookieParser());
+
+app.use(cors({
+  origin: "http://localhost:5173", credentials: true
+}));
 
 import dotenv from 'dotenv';
 dotenv.config();

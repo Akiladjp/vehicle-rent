@@ -7,6 +7,13 @@ import bgwallpaper from "../../assets/loginBackground.jpg";
 export const Login = () => {
   const [show, setShow] = useState(false);
 
+  const [name, setName] = useState([]);
+  const [password, setPassword] = useState([]);
+
+  const handleLogin = () => {
+
+  };
+
   return (
     <div
       className="h-screen bg-cover bg-center"
@@ -22,13 +29,15 @@ export const Login = () => {
           <h1 className="text-4xl font-extrabold text-gray-900 mb-8 flex justify-center">
             Login
           </h1>
-          <form className="">
+          <form className="" onSubmit={handleLogin}>
             <div className="mb-4">
               <input
                 type="email"
                 placeholder="Email Address"
                 className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffee58]"
                 required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="mb-6 relative">
@@ -37,6 +46,8 @@ export const Login = () => {
                 placeholder="Password"
                 className="w-full p-3 border  rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffee58]"
                 required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <div className="absolute top-5 right-4">
                 {show === true ? (
