@@ -1,26 +1,27 @@
 import userModels from "../models/userModels.js";
 import bcryptjs from "bcryptjs";
-import crypto from 'crypto'
+import crypto from "crypto";
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndCookie.js";
 import { sendVerificationEmail, sendWelcomeEmail } from "../mailtrap/emails.js";
 
-
-export const login = async(req, res) => {
-
+export const login = async (req, res) => {
   try {
-    
-    const {email, password} = req.body;
+    const { email, password } = req.body;
 
-    const userExist = await userModels.findOne({email});
+    const userExist = await userModels.findOne({ email });
 
-    if(!userExist){
-      return res.status(400).json({message:"Invalid credintial", success:false})
+    if (!userExist) {
+      return res
+        .status(400)
+        .json({ message: "Invalid credintial", success: false });
     }
 
     const ispasswordValid = await bcryptjs.compare(password, user.password);
 
-    if(!ispasswordValid){
-      return res.status(400).json({success:false, message:"invalid password"})
+    if (!ispasswordValid) {
+      return res
+        .status(400)
+        .json({ success: false, message: "invalid password" });
     }
 
     generateTokenAndSetCookie(res, user._id);
@@ -29,16 +30,17 @@ export const login = async(req, res) => {
     await user.save();
 
     res.status(200).json({
-      success:true, message:"Successfully Login", user:{
+      success: true,
+      message: "Successfully Login",
+      user: {
         ...user._doc,
         password: undefined,
       },
-    })
-
+    });
   } catch (error) {
     res.status(400).json({ message: "error in  login" });
   }
-}
+};
 
 export const logout = async (req, res) => {
   try {
@@ -53,17 +55,8 @@ export const signup = async (req, res) => {
   const { name, email, mobile, password } = req.body;
 
   try {
-    if (!name) {
-      throw new Error("Name is required");
-    }
-    if (!email) {
-      throw new Error("Email is required");
-    }
-    if (!mobile) {
-      throw new Error("Phone is required");
-    }
-    if (!password) {
-      throw new Error("Password is required");
+    if (!name || !email || !mobile || !password) {
+      return res.status(400).json({ error: "All fields are required." });
     }
 
     const userExist = await userModels.findOne({ email });
@@ -85,6 +78,7 @@ export const signup = async (req, res) => {
       verificationTokenExpiredAt: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
     });
 
+    console.log(user.json);
     await user.save();
 
     // Generate JWT and set it as a cookie
@@ -146,48 +140,46 @@ export const verifyEmail = async (req, res) => {
   }
 };
 
-export const forgotPassword = async(req, res) => {
-
-  const {email} = req.body;
+export const forgotPassword = async (req, res) => {
+  const { email } = req.body;
 
   try {
-    
-    const userExist = await userModels.findOne({email});
+    const userExist = await userModels.findOne({ email });
 
-    if(!userExist) {
-      return res.status(400).json({message:"Invalid email", success: false})
+    if (!userExist) {
+      return res.status(400).json({ message: "Invalid email", success: false });
     }
 
     const resetToken = crypto.randomBytes(20).toString("hex");
-    const resetTokenExpiresAt = Date.now() + 1*60*60*1000;
+    const resetTokenExpiresAt = Date.now() + 1 * 60 * 60 * 1000;
 
     userExist.resetPasswordToken = resetToken;
     userExist.resetPasswordExpiredAt = resetTokenExpiresAt;
 
     await userExist.save();
 
-    await sendPasswordResetEmail(userExist.email, resetToken, `${process.env.CLIENT_URL}/reset-password/${resetToken}`);
-
+    await sendPasswordResetEmail(
+      userExist.email,
+      resetToken,
+      `${process.env.CLIENT_URL}/reset-password/${resetToken}`
+    );
   } catch (error) {
-    res.status(500).json({message:"Error in forgot password"})
+    res.status(500).json({ message: "Error in forgot password" });
   }
-}
+};
 
-export const checkAuth = async(req, res) => {
-
-  const {email} = req.body;
+export const checkAuth = async (req, res) => {
+  const { email } = req.body;
 
   try {
     const userExist = await userModels.findById(req.userId).select("_password");
 
-    if(!userExist){
-      return res.status(400).json({ sucess: false, message: "user not found" })
+    if (!userExist) {
+      return res.status(400).json({ sucess: false, message: "user not found" });
     }
 
-    res.status(200).json({success: true, userExist});
-
+    res.status(200).json({ success: true, userExist });
   } catch (error) {
-    res.status(500).json({message:"Error in check auth"})
+    res.status(500).json({ message: "Error in check auth" });
   }
-
-}
+};

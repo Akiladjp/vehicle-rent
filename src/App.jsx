@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Home } from "./pages/Home";
 import { RentCar } from "./pages/RentCar";
@@ -18,7 +18,10 @@ import { Profile } from "./pages/Profile";
 import { VehiclePreview } from "./pages/VehiclePreview";
 
 function App() {
+  const location = useLocation();
+
   const [loading, setLoading] = useState(true);
+  const [showHeaderFooter, setShowHeaderFooter] = useState(true);
 
   useEffect(() => {
     setLoading(true);
@@ -29,11 +32,22 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  const path = location.pathname;
+  console.log(path);
+
+  useEffect(() => {
+    if (path == "/signup" || path == "/") {
+      setShowHeaderFooter(false);
+    } else {
+      setShowHeaderFooter(true);
+    }
+  }, [path]);
+
   return loading ? (
     <Loading />
   ) : (
     <>
-      <Navbar />
+    { showHeaderFooter &&  < Navbar /> }
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/rentcar" element={<RentCar />} />
@@ -48,7 +62,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/vehiclepreview" element={<VehiclePreview />} />
       </Routes>
-      <Footer />
+      { showHeaderFooter &&  <Footer /> }
     </>
   );
 }

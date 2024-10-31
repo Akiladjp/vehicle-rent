@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import bgwallpaper from "../../assets/loginBackground.jpg";
-import { useAuthStore } from "../../store/authStore";
+import axios from "axios";
+import Alert from "../../alert/Alert";
 
 export const SignUp = () => {
   const [show, setShow] = useState(false);
@@ -12,18 +13,38 @@ export const SignUp = () => {
   const [email, setEmail] = useState([]);
   const [mobile, setMobile] = useState([]);
   const [password, setPassword] = useState([]);
+  const [showAlert, setShowAlert] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const {signup} = useAuthStore(); 
-
-  const handleRegister = async(e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-
     try {
-      
+      await axios.post(`http://localhost:3000/api/signup`, {
+        name,
+        email,
+        mobile,
+        password,
+      });
+      console.log(name, email, mobile, password);
     } catch (error) {
-      
+      if (error.response && error.response.status === 400) {
+        setErrorMessage("Email Already Exist");
+        setShowAlert(true);
+      } else {
+        setErrorMessage(
+          "An unexpected error occurred. Please try again later."
+        );
+        setShowAlert(true);
+      }
+
+      console.log(error);
     }
-  }
+  };
+
+  const closeAlert = () => {
+    setShowAlert(false);
+    setErrorMessage("");
+  };
 
   return (
     <div
@@ -48,7 +69,7 @@ export const SignUp = () => {
                 className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffee58]"
                 required
                 value={name}
-                onChange={(e)=>setName(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -96,6 +117,8 @@ export const SignUp = () => {
               />
             </div>
           </form>
+
+          {showAlert && <Alert message={errorMessage} onClose={closeAlert} />}
 
           <p className="mt-4 text-gray-700 flex gap-1 justify-center">
             Already have an Account{" "}
