@@ -8,9 +8,9 @@ export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const userExist = await userModels.findOne({ email });
+    const user = await userModels.findOne({ email });
 
-    if (!userExist) {
+    if (!user) {
       return res
         .status(400)
         .json({ message: "Invalid credintial", success: false });
@@ -29,14 +29,8 @@ export const login = async (req, res) => {
     user.lastLogin = new Date();
     await user.save();
 
-    res.status(200).json({
-      success: true,
-      message: "Successfully Login",
-      user: {
-        ...user._doc,
-        password: undefined,
-      },
-    });
+    res.status(200).json({ success: true, message: "Successfully Login" });
+
   } catch (error) {
     res.status(400).json({ message: "error in  login" });
   }

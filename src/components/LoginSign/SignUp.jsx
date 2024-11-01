@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import bgwallpaper from "../../assets/loginBackground.jpg";
 import axios from "axios";
 import Alert from "../../alert/Alert";
@@ -16,6 +16,8 @@ export const SignUp = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const navigate = useNavigate()
+
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
@@ -26,6 +28,8 @@ export const SignUp = () => {
         password,
       });
       console.log(name, email, mobile, password);
+      navigate('/');
+      
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage("Email Already Exist");
@@ -46,7 +50,7 @@ export const SignUp = () => {
     setErrorMessage("");
   };
 
-  return (
+  return ( 
     <div
       className="h-screen bg-cover bg-center"
       style={{

@@ -6,7 +6,7 @@ const Alert = ({ message, onClose }) => {
       <div className="bg-white p-6 rounded shadow-lg text-center w-80">
         <p className="text-lg font-semibold">{message}</p>
         <button
-          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="mt-4 px-4 py-2 bg-yellow-300 text-black font-semibold rounded hover:bg-yellow-400"
           onClick={onClose}
         >
           Close
