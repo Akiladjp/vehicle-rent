@@ -69,3 +69,4 @@ app.listen(PORT, () => {
 
 //set API routes
 app.use('/api', router);
+app.use('/api', vehicle);

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 export const AddCar = () => {
   const [mainImage, setMainImage] = useState(null);
@@ -39,10 +40,24 @@ export const AddCar = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Submit form data here
+      const response = await axios.post(
+        `http://localhost:3000/api/addVehicle`,
+        {
+          brand,
+          engine,
+          transmission,
+          seat,
+          price,
+          fuel,
+          color,
+          driver,
+        }
+      );
+
+      console.log("Vehicle added successfully:", response.data);
     } catch (error) {
       console.log("Error is", error);
     }
@@ -69,7 +84,9 @@ export const AddCar = () => {
                   className="object-cover w-full h-full rounded-sm"
                 />
               ) : (
-                <span className="text-gray-500">Click to upload main image</span>
+                <span className="text-gray-500">
+                  Click to upload main image
+                </span>
               )}
             </div>
 
