@@ -30,7 +30,7 @@ export const Login = () => {
 
       if (result.data.success) {
         navigate("/home");
-        toastr.success("Welcome ", { timeout: 300 });
+        toastr.success("Login Successfuly", { timeout: 300 });
       } else {
         console.log("Login Error:", result.data.message);
         setEmail("");
@@ -68,7 +68,8 @@ export const Login = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position='top-center' reverseOrder={false} />
+
       <div className="flex flex-col items-center justify-center min-h-screen">
         <div className="bg-white shadow-md rounded-lg px-8 py-6 max-w-sm w-full bg-opacity-70">
           <h1 className="text-4xl font-extrabold text-gray-900 mb-8 flex justify-center">

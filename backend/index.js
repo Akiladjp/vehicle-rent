@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import router from "./routes/authRoutes.js";
+import vehicle from "./routes/vehicleRoutes.js";
 import cookieParser from "cookie-parser";
 
 const app = express();
